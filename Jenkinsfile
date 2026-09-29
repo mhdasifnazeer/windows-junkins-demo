@@ -9,7 +9,10 @@ pipeline {
             }
         }
 
-        
+        stage('Install Dependencies') {
+            steps {
+                bat '"C:\\src\\windows junkins\\venv\\Scripts\\python.exe" --version'
+                bat '"C:\\src\\windows junkins\\venv\\Scripts\\python.exe" -m pip install -r requirements.txt'
             }
         }
 
