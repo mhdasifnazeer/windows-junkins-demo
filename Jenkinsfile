@@ -3,7 +3,7 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
+        stage('SCM Checkout') {
             steps {
                 checkout scm
             }
@@ -11,19 +11,19 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'pip3 install -r requirements.txt'
+                bat 'pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'python3 test.py'
+                bat 'python test.py'
             }
         }
 
         stage('Run Flask App') {
             steps {
-                sh 'python3 app.py &'
+                bat 'start /B python app.py'
             }
         }
     }
